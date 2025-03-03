@@ -14,6 +14,16 @@ public class NumbersTests
     }
 
     [Fact]
+    public void Sum_ShouldBeThreadSafe()
+    {
+        Parallel.For(0, 1000, _ =>
+        {
+            var result = _numbers.Sum(new int[] { 1, 2, 3, 4 });
+            Assert.Equal(10, result);
+        });
+    }
+
+    [Fact]
     public void Sum_EmptyArray_ShouldReturnZero()
     {
         var result = _numbers.Sum(new int[] { });

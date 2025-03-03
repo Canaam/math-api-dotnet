@@ -28,6 +28,13 @@ public class NumberTests
     }
 
     [Fact]
+    public void Divide_ShouldReturnCorrectDecimalResult()
+    {
+        var result = _number.Divide(10, 3);
+        Assert.Equal(3.33f, result, 2); 
+    }
+
+    [Fact]
     public void Divide_ByZero_ShouldThrowException()
     {
         Assert.Throws<DivideByZeroException>(() => _number.Divide(10, 0));
